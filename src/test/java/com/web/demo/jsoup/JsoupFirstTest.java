@@ -156,4 +156,41 @@ public class JsoupFirstTest {
         System.out.println("获取到的结果"+element.text());
     }
 
+    @Test
+    /*
+     * 选择器组合使用
+     * */
+    public void testSelector2() throws IOException {
+        // 解析文件
+        Document doc = Jsoup.parse(new File("F:\\Work\\JsoupStringTest.html"),"utf8");
+
+        // 获取元素
+
+        // 1.el#id: 元素+ID
+        Element element = doc.select("h3#city_bj").first();
+
+        // 2.el.class: 元素+class
+        element = doc.select("li.class_a").first();
+
+        // 3.el[attr]: 元素+属性
+        element = doc.select("span[abc]").first();
+
+        // 4.任意组合: eg:span[abc].s_name
+        element = doc.select("span[abc].s_name").first();
+
+        // 5. ancestor child: 查找某个元素下子元素 eg: .city_con li 查找“city_con"下的所有li
+        Elements elements = doc.select(".city_con li");
+
+        // 6. parent > child: 查找某个父元素下的直接子元素 eg: .city_con > ul > li
+        elements = doc.select(".city_con > ul > li");
+
+        // 7. parent> *: 查找某个父元素下的所有直接子元素
+        elements= doc.select(".city_con > ul > *");
+
+
+        System.out.println("获取到的结果"+element.text());
+        for (Element element1 : elements) {
+            System.out.println("遍历的结果"+element1);
+        }
+    }
 }
