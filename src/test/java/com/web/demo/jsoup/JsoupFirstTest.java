@@ -37,4 +37,16 @@ public class JsoupFirstTest {
         // 打印
         System.out.println(title);
     }
+
+    @Test
+    public void  testFile() throws IOException {
+        // 解析文件
+        Document doc = Jsoup.parse(new File("F:\\Work\\JsoupStringTest.html"),"utf8");
+
+        // 使用标签选择器，获取title标签中的内容
+        String title = doc.getElementsByTag("title").first().text();
+
+        // 打印
+        System.out.println(title);
+    }
 }
