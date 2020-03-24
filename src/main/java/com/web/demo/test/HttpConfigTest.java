@@ -25,7 +25,7 @@ public class HttpConfigTest {
 
         // 给请求设置请求信息
         httpGet.setConfig(config);
-        
+
         CloseableHttpResponse response = null;
         try {
             // 使用HttpClient发起请求，获取response
